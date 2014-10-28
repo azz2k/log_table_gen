@@ -7,19 +7,16 @@ class str_item:
     self.log10 = l
 
 if __name__ == "__main__":
-  input_precision = 2 
-  output_precision = 3
-  mp.dps = output_precision + 10
+  input_dps = 3
+  output_dps = 6
+  mp.dps = output_dps + 10
   
   table_raw = []
-  number = mp.mpf(1.0)
-  while number <= mp.mpf(10.0):
+  for number in mp.arange(1.0, 10.0, mp.power(10, -(input_dps-1))):
     table_raw.append([number, mp.log10(number)])
-    number = number + mp.power(10, -input_precision)
   
   table = []
-  with mp.workdps(output_precision):
-    table = [str_item(row[0], row[1]) for row in table_raw]
+  table = [str_item(mp.nstr(row[0], input_dps), mp.nstr(row[1], output_dps)) for row in table_raw]
   
   latex_renderer = Environment(
     block_start_string = "%{",

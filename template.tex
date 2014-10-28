@@ -3,12 +3,12 @@
 \usepackage[utf8]{inputenc}
 
 \begin{document}
-
+  
   \begin{tabular}{ll}
-  number & log10(number) \\
-  %{ for item in table %}
+    number & log10(number) \\
+    \hline \\
+    %# for item in table:
     $%{{ item.number %}}$ & $%{{ item.log10 %}}$ \\
-  %{ endfor %}
+    %# endfor
   \end{tabular}
-
 \end{document}

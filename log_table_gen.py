@@ -10,6 +10,8 @@ if __name__ == "__main__":
   input_dps = 3
   output_dps = 6
   mp.dps = output_dps + 10
+  mp.lstrip_blocks = True
+  mp.trim_blocks = True
   
   table_raw = []
   for number in mp.arange(1.0, 10.0, mp.power(10, -(input_dps-1))):
@@ -21,6 +23,7 @@ if __name__ == "__main__":
   latex_renderer = Environment(
     block_start_string = "%{",
     block_end_string = "%}",
+    line_statement_prefix = "%#",
     variable_start_string = "%{{",
     variable_end_string = "%}}",
     loader = FileSystemLoader("."))

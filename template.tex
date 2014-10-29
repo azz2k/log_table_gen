@@ -1,17 +1,22 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
 \begin{document}
   
   %{ for page in pages %}
-  \begin{tabular}{ll}
-    %{ set table = page %}
-    number & log10(number) \\
-    \hline \\
-    %# for item in table:
-    $%{{ item.number %}}$ & $%{{ item.log10 %}}$ \\
-    %# endfor
-  \end{tabular}
+  \begin{table}[h!]
+    \scriptsize
+    \centering
+    \begin{tabular}{ll}
+      %{ set table = page %}
+      number & log10(number) \\
+      \hline \\
+      %# for item in table:
+      $%{{ item.number %}}$ & $%{{ item.log10 %}}$ \\
+      %# endfor
+    \end{tabular}
+  \end{table}
+  \newpage
   %{ endfor %}
 \end{document}

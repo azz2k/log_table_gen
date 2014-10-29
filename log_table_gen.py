@@ -7,8 +7,8 @@ class str_item:
     self.log10 = l
 
 if __name__ == "__main__":
-  input_dps = 4
-  output_dps = 20
+  input_dps = 5
+  output_dps = 72
   rows_per_page = 50
   mp.dps = output_dps + 10
   

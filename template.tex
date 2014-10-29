@@ -4,11 +4,14 @@
 
 \begin{document}
   
+  %{ for page in pages %}
   \begin{tabular}{ll}
+    %{ set table = page %}
     number & log10(number) \\
     \hline \\
     %# for item in table:
     $%{{ item.number %}}$ & $%{{ item.log10 %}}$ \\
     %# endfor
   \end{tabular}
+  %{ endfor %}
 \end{document}

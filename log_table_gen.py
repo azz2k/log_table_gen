@@ -7,18 +7,19 @@ class str_item:
     self.log10 = l
 
 if __name__ == "__main__":
-  input_dps = 3
-  output_dps = 6
+  input_dps = 4
+  output_dps = 20
+  rows_per_page = 50
   mp.dps = output_dps + 10
-  mp.lstrip_blocks = True
-  mp.trim_blocks = True
   
   table_raw = []
   for number in mp.arange(1.0, 10.0, mp.power(10, -(input_dps-1))):
     table_raw.append([number, mp.log10(number)])
   
-  table = []
-  table = [str_item(mp.nstr(row[0], input_dps), mp.nstr(row[1], output_dps)) for row in table_raw]
+  table_str = []
+  table_str = [str_item(mp.nstr(row[0], input_dps), mp.nstr(row[1], output_dps)) for row in table_raw]
+
+  pages = [table_str[i:i+rows_per_page] for i in range(0, len(table_str), rows_per_page)]
   
   latex_renderer = Environment(
     block_start_string = "%{",
@@ -30,4 +31,4 @@ if __name__ == "__main__":
   template = latex_renderer.get_template("template.tex")
   
   with open("log_table.tex", mode="w") as f:
-    f.write(template.render(table=table))
+    f.write(template.render(pages=pages))

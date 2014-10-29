@@ -4,11 +4,11 @@ from jinja2 import Environment, FileSystemLoader
 class str_item:
   def __init__(self, n, l):
     self.number = n
-    self.log10 = l
+    self.log10 = l[0:2] + "\,".join([l[i:i+3] for i in range(2, len(l), 3)])
 
 if __name__ == "__main__":
   input_dps = 5
-  output_dps = 72
+  output_dps = 60
   rows_per_page = 50
   mp.dps = output_dps + 10
   
